@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BakeCharm - Tiers of Joy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff9cce;
+            --secondary: #d4af37;
+            --accent: #7b3f00;
+            --light: #fff5f8;
+            --dark: #552200;
+            --cream: #fffaf0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        header {
+            background: var(--cream);
+            padding: 2rem 1.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-img {
+            width: 180px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: var(--accent);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--accent);
+            position: relative;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 0.5rem auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px dotted var(--light);
+            padding-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .item-price {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .note {
+            font-style: italic;
+            color: var(--secondary);
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .flavor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .flavor-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .flavor-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .flavor-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .flavor-list {
+            list-style: none;
+        }
+        
+        .flavor-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .flavor-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .flavor-icon {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            margin: 1rem 0;
+        }
+        
+        .social-icons {
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+            
+            .flavor-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo-img">
+                <img src="BakeCharm-logo-sticker.png" alt="BakeCharm Logo">
+            </div>
+            <p class="tagline">Tiers Of Joy</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2 class="section-title">Our Rate List</h2>
+        
+        <div class="card">
+            <h3 class="card-title">Buttercream Cakes</h3>
+            <div class="menu-item">
+                <span class="item-name">Buttercream Cake (per pound)</span>
+                <span class="item-price">Rs. 1500</span>
+            </div>
+            <p class="note">Minimum order: 2.5 pounds</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title">Fresh Cream Cakes</h3>
+            <div class="menu-item">
+                <span class="item-name">Fresh Cream Cake (per pound)</span>
+                <span class="item-price">Rs. 1000</span>
+            </div>
+            <p class="note">Minimum order: 2 pounds</p>
+            <p class="note">Additional Rs. 500 for filling in cakes</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title">Fondant Cakes</h3>
+            <p class="note">Priced according to customizations</p>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title">Bento Cakes & Cupcakes</h3>
+            <div class="menu-item">
+                <span class="item-name">Bento Cake</span>
+                <span class="item-price">Rs. 1200 each</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Cupcake</span>
+                <span class="item-price">Rs. 250 each</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Cupcake with filling</span>
+                <span class="item-price">Rs. 300 each</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Specialty Cupcake (Nutella/Lotus/Oreo)</span>
+                <span class="item-price">Rs. 400 each</span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-title">Brownies & Cookies</h3>
+            <div class="menu-item">
+                <span class="item-name">Brownies</span>
+                <span class="item-price">Rs. 2100</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Chocolate Chip Cookie (each)</span>
+                <span class="item-price">Rs. 150</span>
+            </div>
+            <div class="menu-item">
+                <span class="item-name">Chocolate Chip Cookie (6 pieces)</span>
+                <span class="item-price">Rs. 850</span>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Our Flavors</h2>
+        
+        <div class="flavor-grid">
+            <div class="flavor-category">
+                <h3>Sponge Flavors</h3>
+                <ul class="flavor-list">
+                    <li><i class="fas fa-cake flavor-icon"></i> Vanilla sponge</li>
+                    <li><i class="fas fa-cake flavor-icon"></i> Chocolate sponge</li>
+                    <li><i class="fas fa-cake flavor-icon"></i> Red velvet sponge</li>
+                    <li><i class="fas fa-cake flavor-icon"></i> Lotus sponge</li>
+                </ul>
+            </div>
+            
+            <div class="flavor-category">
+                <h3>Buttercream Flavors</h3>
+                <ul class="flavor-list">
+                    <li><i class="fas fa-ice-cream flavor-icon"></i> Vanilla buttercream</li>
+                    <li><i class="fas fa-ice-cream flavor-icon"></i> Chocolate buttercream</li>
+                    <li><i class="fas fa-ice-cream flavor-icon"></i> Oreo buttercream</li>
+                    <li><i class="fas fa-ice-cream flavor-icon"></i> Lotus buttercream</li>
+                </ul>
+            </div>
+            
+            <div class="flavor-category">
+                <h3>Filling Options</h3>
+                <ul class="flavor-list">
+                    <li><i class="fas fa-fill-drip flavor-icon"></i> Milk Chocolate Ganache</li>
+                    <li><i class="fas fa-fill-drip flavor-icon"></i> White Chocolate Ganache</li>
+                    <li><i class="fas fa-fill-drip flavor-icon"></i> Cream cheese frosting</li>
+                    <li><i class="fas fa-fill-drip flavor-icon"></i> Lotus</li>
+                    <li><i class="fas fa-fill-drip flavor-icon"></i> Nutella</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <h3>BakeCharm</h3>
+        <p class="tagline">Tiers Of Joy</p>
+        
+        <div class="contact-info">
+            <p>For orders and inquiries:</p>
+            <p><i class="fab fa-instagram"></i> @bakecharmm</p>
+        </div>
+        
+        <p>&copy; 2023 BakeCharm. All rights reserved.</p>
+    </footer>
+</body>
+</html>
